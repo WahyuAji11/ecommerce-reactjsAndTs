@@ -8,7 +8,7 @@ const poppins = Poppins({ subsets: ['latin'], weight: ['400', '700'] })
 
 
 export const metadata: Metadata = {
-  title: 'The Shop',
+  title: 'Mermaid\'s Shop',
   description: 'E-commerce Website',
 }
 
