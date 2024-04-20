@@ -1,7 +1,8 @@
-"use client";
-import SetColor from "@/app/components/products/SetColor";
-import { Rating } from "@mui/material";
+'use client'
 import { useState, useCallback } from "react";
+import { Rating } from "@mui/material";
+import SetColor from "@/app/components/products/SetColor";
+import SetQuantity from "@/app/components/products/SetQuantity";
 
 interface ProductDetailsProps {
     product: any;
@@ -40,6 +41,8 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
         price: product.price,
     });
 
+    console.log(cartProduct);
+
     const productRating =
         product.reviews.reduce((acc: number, items: any) => items.rating + acc, 0) /
         product.reviews.length;
@@ -48,6 +51,20 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
         setCartProduct((prevCartProduct) => ({
             ...prevCartProduct,
             selectedImg: value,
+        }));
+    }, []);
+
+    const handleQtyIncrease = useCallback(() => {
+        setCartProduct((prev) => ({
+            ...prev,
+            quantity: prev.quantity + 1,
+        }));
+    }, []);
+
+    const handleQtyDecrease = useCallback(() => {
+        setCartProduct((prev) => ({
+            ...prev,
+            quantity: prev.quantity > 1 ? prev.quantity - 1 : 1,
         }));
     }, []);
 
@@ -63,10 +80,10 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
                 <div className="text-justify">{product.description}</div>
                 <Horizontal />
                 <div>
-                    <span className="font-semibold">Category</span> {product.category}
+                    <span className="font-semibold">Category: </span> {product.category}
                 </div>
                 <div>
-                    <span className="font-semibold">Brand</span> {product.brand}
+                    <span className="font-semibold">Brand: </span> {product.brand}
                 </div>
                 <div className={product.inStock ? "text-teal-400" : "text-rose-400"}>
                     {product.inStock ? 'In Stock' : 'Out of Stock'}
@@ -78,7 +95,11 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
                     handleColorSelect={handleColorSelect}
                 />
                 <Horizontal />
-                <div>quantity</div>
+                <SetQuantity
+                    cartProduct={cartProduct}
+                    handleQtyIncrease={handleQtyIncrease}
+                    handleQtyDecrease={handleQtyDecrease}
+                />
                 <Horizontal />
                 <div>add to cart</div>
             </div>
