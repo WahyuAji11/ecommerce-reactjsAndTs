@@ -53,29 +53,29 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
     console.log(cartProducts)
 
     useEffect(() => {
-        setIsProductInCart(false)
+    setIsProductInCart(false);
 
-        if(cartProducts) {
-            const exitingIndex = cartProducts.findIndex((item) => item.id === product.id)
+    if (cartProducts) {
+        const existingIndex = cartProducts.findIndex((item) => item.id === product.id);
 
-            if(exitingIndex > -1) {
-                setIsProductInCart(true);
-            }
+        if (existingIndex > -1) {
+            setIsProductInCart(true);
         }
-    }, [cartProduct])
+    }
+}, [cartProducts, product.id]);
+
 
     const productRating =
         product.reviews.reduce((acc: number, items: any) => items.rating + acc, 0) /
         product.reviews.length;
 
     const handleColorSelect = useCallback(
-        (value: SelectedImgType) => {
-            setCartProduct((prevCartProduct) => ({
-                    ...prevCartProduct,
-                    selectedImg: value,
-                }));
-            }, [cartProduct.selectedImg]
-    );
+    (value: SelectedImgType) => {
+        setCartProduct((prevCartProduct) => ({
+            ...prevCartProduct,
+            selectedImg: value,
+        }));
+    }, []);
 
     const handleQtyIncrease = useCallback(() => {
         setCartProduct((prev) => ({
