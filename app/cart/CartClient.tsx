@@ -40,8 +40,8 @@ const CartClient = () => {
                 <div className="justify-self-end">TOTAL</div>
             </div>
             <div>
-                {cartProducts && cartProducts.map((item) => {
-                    return <ItemContent key={item.id} item={item} />
+                {cartProducts.map((item) => {
+                    return <ItemContent key={item.id} item={item}/>;
                 })}
             </div>
             <div className="border=t[1.5px] border-slate-200 py-4 flex justify-between gap-4">
