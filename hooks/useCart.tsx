@@ -101,6 +101,7 @@ export const CartContextProvider = (props: Props) => {
     const handleClearCart = useCallback(() => {
     setCartProducts([]);
     setCartTotalQty(0);
+    toast.success("The cart has been cleared")
     localStorage.setItem('KisamaApparelItems', JSON.stringify([]));
 }, [setCartProducts, setCartTotalQty]);
 
