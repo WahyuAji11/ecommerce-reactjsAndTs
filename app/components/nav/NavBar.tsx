@@ -1,9 +1,9 @@
 import Container from "../Container";
 import Link from "next/link";
 import { Redressed } from "next/font/google";
-import CartIcon from "../CartIcon";
 import UserIcon from "../UserIcon";
 import SearchBar from "../SearchBar";
+import CartCount from "./CartCount";
 
 const redressed = Redressed({ subsets: ['latin'], weight: '400' });
 
@@ -21,7 +21,7 @@ const Navbar = () => {
                             <SearchBar/>
                         </div>
                         <div className="flex items-center gap-8 md:gap-12">
-                            <CartIcon itemCount={itemCount} />
+                            <CartCount />
                             <UserIcon hasNotification={hasUserNotification} />
                         </div>
                     </div>
