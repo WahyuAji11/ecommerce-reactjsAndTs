@@ -1,33 +1,36 @@
 'use client'
+
 import { useCart } from "@/hooks/useCart";
 import { useRouter } from "next/navigation";
 import { FaShoppingCart } from 'react-icons/fa';
 
-
 const CartCount = () => {
-    const {cartTotalQty} = useCart();
+    const { cartTotalQty } = useCart();
     const router = useRouter();
-    return ( 
+
+    return (
         <div className="relative cursor-pointer" onClick={() => router.push('/cart')}>
             <div className="text-3xl">
-                <FaShoppingCart/>
+                <FaShoppingCart />
             </div>
-            <span className="
-                absolute
-                top-[-10px]
-                right-[-10px]
-                bg-red-600
-                text-white
-                h-5
-                w-5
-                rounded-full
-                flex
-                items-center
-                justify-center
-                text-sm
-            ">
-                {cartTotalQty}
-            </span>
+            {cartTotalQty >= 1 && (
+                <span className="
+                    absolute
+                    top-[-10px]
+                    right-[-10px]
+                    bg-red-600
+                    text-white
+                    h-5
+                    w-5
+                    rounded-full
+                    flex
+                    items-center
+                    justify-center
+                    text-sm
+                ">
+                    {cartTotalQty}
+                </span>
+            )}
         </div>
     );
 }
