@@ -1,6 +1,7 @@
 // src/components/UserIcon.tsx
 'use client';
 
+import { useRouter } from 'next/navigation';
 import React from 'react';
 import { FaUser } from 'react-icons/fa';
 
@@ -9,8 +10,14 @@ interface UserIconProps {
 }
 
 const UserIcon: React.FC<UserIconProps> = ({ hasNotification }) => {
+    const router = useRouter();
+
+    const handleClick = () => {
+        router.push('./profile')
+    }
+
     return (
-        <div className="relative inline-block cursor-pointer">
+        <div className="relative inline-block cursor-pointer" onClick={handleClick}>
         <FaUser size={24} />
         {hasNotification}
         {/* kalo mau nambahin notif user pake code di bawah ini*/}
