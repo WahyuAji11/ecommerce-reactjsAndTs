@@ -8,7 +8,6 @@ const FormWrap = ({children} : {children: React.ReactNode}) => {
         justify-center
         pb-12
         pt-24
-
         ">
             <div
             className="
