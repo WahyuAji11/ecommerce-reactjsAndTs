@@ -44,13 +44,13 @@ const LoginForm = () => {
         />
 
         <Input 
-        id="password"
-        label="Password"
-        disabled={isLoading}
-        register={register}
-        errors={errors}
-        required
-        type="password"
+            id="password"
+            label="Password"
+            disabled={isLoading}
+            register={register}
+            errors={errors}
+            required
+            type="password"
         />
         <Button label = {isLoading ? "Loading" : 'Login'} onClick={handleSubmit(onSubmit)}/>
         
